@@ -1,0 +1,174 @@
+@import '~@angular/material/theming';
+
+$h1-level:mat-typography-level(
+  $font-family: "Cambo Arial Verdana Tahoma sans-serif",
+  $font-weight: 400,
+  $font-size: 33px,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$h2-level:mat-typography-level(
+  $font-family: "Krub Arial Verdana Tahoma sans-serif",
+  $font-weight: 400,
+  $font-size: 24px,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$h3-level:mat-typography-level(
+  $font-family: "Krub Arial Verdana Tahoma sans-serif",
+  $font-weight: 400,
+  $font-size: 24px,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$h4-level:mat-typography-level(
+  $font-family: "Krub Arial Verdana Tahoma sans-serif",
+  $font-weight: 400,
+  $font-size: 24px,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$input-level:mat-typography-level(
+  $font-family: "Krub Arial Verdana Tahoma sans-serif",
+  $font-weight: 400,
+  $font-size: 12px,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$alianza-typography: mat-typography-config(
+    $headline:$h1-level,
+    $title:$h2-level,
+    $subheading-2:$h3-level,
+    $subheading-1:$h4-level,
+    $input:$input-level,
+);
+
+
+
+@include mat-core($alianza-typography);
+
+$alianza-button-hover:#002F58;
+
+$alianza-primary-color: (
+    50 : #02A2E3,
+    500 : #0370D1,
+    900 : #002F58,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$alianza-accent-color: (
+    100 : #CAD32C,
+    500 : #999C24,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$alianza-warn-color: (
+    100 : #FF412E,
+    500 : #B82628,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$alianza-palette-primary: mat-palette($alianza-primary-color);
+$alianza-palette-accent: mat-palette($alianza-accent-color);
+$alianza-palette-warn: mat-palette($alianza-warn-color);
+
+$alianza-theme: mat-light-theme((
+    color: (
+        primary:$alianza-palette-primary,
+        accent:$alianza-palette-accent,
+        warn:$alianza-palette-warn
+    )
+));
+
+@include angular-material-theme($alianza-theme);
+
+button.mat-primary:hover {
+    background-color: $alianza-button-hover;
+}
+
+button.mat-primary{
+    min-height: 40px;
+}
+
+.enlace-alianza-redirect{
+    cursor: pointer;
+    color: #673AB7;
+    font-weight: bold;
+  }
+
+/*Tablas*/
+
+.mat-table {
+    background: #FFF;
+    border-color: #CCC;
+    color: #1D476B;
+    overflow-x: scroll!important;
+
+    
+    .mat-row:nth-child(even) {
+        background: #F2F6F9;
+    }
+
+    .mat-row:nth-child(odd) {
+        background: #F9FBFC;
+    }
+   
+}
+
+.mat-drawer-content{
+    height: 100vh!important;
+}
+
+.mat-form-field{
+    width: 100%;
+}

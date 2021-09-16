@@ -1,0 +1,89 @@
+
+<div style="padding: 40px;">
+  <section>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" (click)="openDialog()"> <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon> New</button>
+      <button mat-raised-button color="primary" (click)="exportFile()"> <mat-icon aria-hidden="false" aria-label="Example home icon">file_upload</mat-icon> Export</button>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+  <section style="width: 100%;">
+    <div class="example-button-row">
+      <mat-form-field appearance="legacy" style="width: 25%;">
+        <mat-label>Enter shared key</mat-label>
+        <input type="text" matInput placeholder="Enter shared key" autocomplete="off" [(ngModel)]="searchText">
+      </mat-form-field>
+      <span><button (click)="tableLoad()" mat-button>Search</button></span>
+      <button mat-raised-button color="primary" (click)="toggleAdvanced()"> Advanced Search</button>
+      <div *ngIf="toggleAdvancedSearch" class="mat-elevation-z4" style="max-width: 400px;margin: 10px;padding: 15px;">
+        <form [formGroup]="clientFormSearch">
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="nameInput" name="nameInput" [(ngModel)]="clientSearch.name">
+          </mat-form-field>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Name" formControlName="phoneInput" name="phoneInput" [(ngModel)]="clientSearch.phone">
+          </mat-form-field>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>E-Mail</mat-label>
+            <input matInput placeholder="Name" formControlName="emailInput" name="emailInput" [(ngModel)]="clientSearch.email">
+          </mat-form-field>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="picker" name="startDateInput" formControlName="startDateInput" [(ngModel)]="clientSearch.startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>End date</mat-label>
+            <input matInput [matDatepicker]="picker2" name="endDateInput" formControlName="endDateInput" [(ngModel)]="clientSearch.endDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+          <button  (click)="tableLoadAdvanced()" mat-raised-button color="primary">Ok</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+  
+  <section style="width: 100%;">
+    <div class="example-label"><h2>Clients</h2></div>
+    <mat-divider></mat-divider>
+    <div>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z4" matSort style="width: 100%;">
+        <ng-container matColumnDef="sharedKey">
+            <mat-header-cell *matHeaderCellDef mat-sort-header > Shared Key </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sharedKey}} </mat-cell>
+            
+        </ng-container>
+        <ng-container matColumnDef="businessId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Business ID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.businessId}} </mat-cell>
+            
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+            
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Phone</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+            
+        </ng-container>
+        <ng-container matColumnDef="dataAdded">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Data Added </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dataAdded}} </mat-cell>
+            
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': row.isSeen }"></mat-row>
+        
+    </mat-table>
+    </div>
+  </section>
+</div>

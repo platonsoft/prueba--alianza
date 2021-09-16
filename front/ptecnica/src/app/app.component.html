@@ -1,0 +1,29 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-toolbar >
+      <h3 style="display: contents;">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 50px;">person_outline</mat-icon>
+        Clients
+      </h3>
+    </mat-toolbar>
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option><h4><mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 25px;">person_outline</mat-icon> Clients</h4></mat-list-option>
+      <mat-list-option><h4><mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 25px;">history_edu</mat-icon> Client look history</h4></mat-list-option>
+      <mat-list-option><h4><mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 25px;">emergency</mat-icon> Emergency PIN configuration</h4></mat-list-option>
+      <mat-list-option><h4><mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 25px;">local_pharmacy</mat-icon> Emergency PIN history</h4></mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar >
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+      </button>
+      <img src="../../assets/logo.png" style="max-height: 50px;" alt="logo">
+    </mat-toolbar>
+      
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+

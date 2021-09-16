@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <h1 mat-dialog-title>Create new client</h1>
+</mat-toolbar>
+<form [formGroup]="clientForm">
+  <div mat-dialog-content>
+    <mat-error *ngIf="clientForm.controls['nameInput'].hasError('required')">Name required</mat-error>
+    <mat-error *ngIf="clientForm.controls['phoneInput'].hasError('required')">Phone required</mat-error>
+    <mat-error *ngIf="clientForm.controls['emailInput'].hasError('required')">Email required</mat-error>
+    <mat-error *ngIf="clientForm.controls['startDateInput'].hasError('required')">Start Date required</mat-error>
+    <mat-error *ngIf="clientForm.controls['endDateInput'].hasError('required')">End Date required</mat-error>
+    <mat-form-field appearance="legacy">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="nameInput" name="nameInput" [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Phone</mat-label>
+      <input required matInput formControlName="phoneInput" name="phoneInput" [(ngModel)]="data.phone">
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>E-mail</mat-label>
+      <input required matInput formControlName="emailInput" name="emailInput" [(ngModel)]="data.email">
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Start date</mat-label>
+      <input required matInput [matDatepicker]="picker" formControlName="startDateInput" name="startDateInput"
+        [(ngModel)]="data.startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>End date</mat-label>
+      <input required matInput [matDatepicker]="picker2" formControlName="endDateInput" name="endDateInput"
+        [(ngModel)]="data.endDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" mat-button (click)="onNoClick()" cdkFocusInitial>Ok</button>
+  </div>
+</form>
